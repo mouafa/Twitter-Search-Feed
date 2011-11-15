@@ -179,6 +179,20 @@ Feed.prototype = {
         
         // Search
         _this.api.search(_this.options.search, successCallback, failureCallback, options);
+    },
+    
+    /**
+     * Destroy our feed view and kill our timers
+     */
+    destroy: function()
+    {
+        var _this = this;
+        
+        // Kill the update timeout so we dont update in the background
+        clearTimeout(_this.updateTimeout);
+        
+        // Kill the view
+        _this.view.destroy();
     }
     
 };

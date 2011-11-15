@@ -13,6 +13,7 @@
  * 
  * License available in GPL-LICENSE.txt or <http://www.gnu.org/licenses/>.
  */
+ 
 /**
  * Base class for creating a TwitterSearchFeed
  *
@@ -69,5 +70,11 @@ TwitterSearchFeed.prototype = {
         var _this = this;
         // Clear out the status children
         _this.$status.children().remove();
+    },
+    
+    destroy: function()
+    {
+        var _this = this;
+        _this.feed.destroy();
     }
 };

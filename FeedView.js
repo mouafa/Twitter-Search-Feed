@@ -25,6 +25,7 @@ function FeedView(parent)
     _this.options = parent.options;     // Shortcut to the parents options
     
     _this.$node = _this.options.$node;  // Grab the node
+    _this.$fade = null;                 // Fading gradient
     _this.$viewport = null;             // Our viewport
     _this.$feed = null;                 // Our feed
     
@@ -41,7 +42,7 @@ FeedView.prototype = {
         var _this = this;
         
         _this.$node.addClass('TwitterSearchFeed');
-        _this.$node.append('<div class="TwitterSearchFeed_fade"></div>');
+        _this.$fade = $('<div class="TwitterSearchFeed_fade"></div>').appendTo(_this.$node);;
         
         // Create the viewport and append
         _this.$viewport = $('<div class="TwitterSearchFeed_viewport"></div>').appendTo(_this.$node);
@@ -49,6 +50,19 @@ FeedView.prototype = {
         
         // Create the feed div
         _this.$feed = $('<div class="TwitterSearchFeed_feed"></div>').appendTo(_this.$viewport);
+    },
+    
+    /**
+     * Destroy the view
+     */
+    destroy: function()
+    {
+        var _this = this;
+        
+        _this.$fade.remove();
+        _this.$viewport.remove();
+        
+        _this.$node.removeClass('TwitterSearchFeed');
     },
     
     /**
