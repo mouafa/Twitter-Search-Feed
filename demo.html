@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    
+    <!-- include jquery -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+    
+    <!-- include source. order is important -->
+    <!--
+    <script type="text/javascript" src="TwitterSearch.js"></script>
+    <script type="text/javascript" src="TwitterSearchRequest.js"></script>
+    <script type="text/javascript" src="Tweet.js"></script>
+    <script type="text/javascript" src="FeedView.js"></script>
+    <script type="text/javascript" src="FeedBuffer.js"></script>
+    <script type="text/javascript" src="Feed.js"></script>
+    <script type="text/javascript" src="TwitterSearchFeed.js"></script>
+    -->
+    
+    <!-- include minified source -->
+    <script type="text/javascript" src="TwitterSearchFeed.min.js"></script>
+    
+    
+    <!-- bring in the styles -->
+    <link rel="stylesheet" type="text/css" href="TwitterSearchFeed.css" />
+    
+    <script type="text/javascript">
+    
+    $(document).ready(function()
+    {
+        // Create the feed
+        new TwitterSearchFeed({
+            $node: $('#feed'),      // The jquery node set representing the feed
+            search: 'skyrim',       // The search term
+            viewportHeight: 300     // The viewport height
+        });
+    });
+    
+    </script>
+    
+    <style type="text/css">
+    
+    html, body {
+        margin: 0;
+        padding: 0;
+        background: #eee;
+        color: #333;
+        font-family: "Lucida Grande";
+        font-size: 12px;
+    }
+    
+    #container {
+        width: 500px;
+        margin: 100px auto;
+        background: #fff;
+        padding: 10px;
+    }
+    
+    </style>
+</head>
+<body>
+    
+    <div id="container">
+        <div id="feed"></div>
+    </div>
+    
+</body>
+</html>
