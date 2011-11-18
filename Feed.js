@@ -83,6 +83,9 @@ Feed.prototype = {
             
             _this.buffer.set(Tweet.constructArray(_this, data.results));
             
+            // Have the view update its prettifying of times
+            _this.view.prettifyTweetTimes();
+            
             // Clear the status
             _this.parent.clearStatus();
         };

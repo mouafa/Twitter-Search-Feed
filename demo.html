@@ -4,10 +4,10 @@
 <head>
     
     <!-- include jquery -->
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
     
     <!-- include source. order is important -->
-    <!--
+    <script type="text/javascript" src="PrettyDate.js"></script>
     <script type="text/javascript" src="TwitterSearch.js"></script>
     <script type="text/javascript" src="TwitterSearchRequest.js"></script>
     <script type="text/javascript" src="Tweet.js"></script>
@@ -15,10 +15,9 @@
     <script type="text/javascript" src="FeedBuffer.js"></script>
     <script type="text/javascript" src="Feed.js"></script>
     <script type="text/javascript" src="TwitterSearchFeed.js"></script>
-    -->
     
     <!-- include minified source -->
-    <script type="text/javascript" src="TwitterSearchFeed.min.js"></script>
+    <!-- <script type="text/javascript" src="TwitterSearchFeed.min.js"></script> -->
     
     
     <!-- bring in the styles -->
@@ -46,7 +45,7 @@
         padding: 0;
         background: #eee;
         color: #333;
-        font-family: "Lucida Grande";
+        font-family: "Lucida Grande", "Lucida Sans Unicode", sans-serif;
         font-size: 12px;
     }
     
@@ -55,6 +54,15 @@
         margin: 100px auto;
         background: #fff;
         padding: 10px;
+    }
+    
+    a {
+        color: #0382c3;
+        text-decoration: none;
+    }
+    
+    a:hover {
+        text-decoration: underline;
     }
     
     </style>

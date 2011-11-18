@@ -143,6 +143,15 @@ FeedView.prototype = {
             
             _this.$feed.append($node);
         });
+    },
+    
+    /**
+     * Update all of the prettifying of tweet times
+     */
+    prettifyTweetTimes: function()
+    {
+        var _this = this;
+        _this.$feed.find('.TwitterSearchFeed_tweet_time').prettyDate();
     }
     
 };

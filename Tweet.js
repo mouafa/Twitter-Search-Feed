@@ -59,7 +59,9 @@ Tweet.prototype = {
             .text(_this.data.from_user)
             .appendTo($content);
         
-        $('<span class="TwitterSearchFeed_tweet_text"></span>').html(_this.data.text).appendTo($content);
+        $('<span class="TwitterSearchFeed_tweet_text"></span>')
+            .html(_this.parseTweetText(_this.data.text))
+            .appendTo($content);
         
         var date = new Date(_this.data.created_at);
         
@@ -77,12 +79,42 @@ Tweet.prototype = {
 
         var dateString = month + '/' + day + '/' + year + ' ' + hour + ':' + minute + ' ' + ampm;    
 
-        $('<div class="TwitterSearchFeed_tweet_time"></div>').text(dateString).appendTo($content);
+        $('<div class="TwitterSearchFeed_tweet_time"></div>')
+            .attr('title', _this.data.created_at)
+            .text(dateString)
+            .prettyDate()
+            .appendTo($content);
         
         // Return the invisible node
         return $node;
-    }
+    },
     
+    /**
+     * Parses the tweet text looking for @mentions and urls to turn into links
+     */
+    parseTweetText: function(text)
+    {
+        // Hack for making sure theres a space at the end for our regexs to work off
+        text += ' ';
+        
+        // Wrap URLs in anchor tags
+        text = text.replace(/(https?\:\/\/\S+)(\s)/gi, function()
+        {
+            var url = arguments[1];
+            var delimiter = arguments[2];
+            return '<a href="' + url + '" target="_blank">' + url + '</a>' + delimiter;
+        });
+        
+        // @ mentions
+        text = text.replace(/@(\w+)(\W)/gi, function()
+        {
+            var username = arguments[1];
+            var delimiter = arguments[2];
+            return '<a href="http://twitter.com/' + username + '" target="_blank">@' + username + '</a>' + delimiter;
+        });
+        
+        return text;
+    }
 };
 
 /**
